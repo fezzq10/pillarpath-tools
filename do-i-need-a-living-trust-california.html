@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Do I Need a Living Trust in California? | PillarPath</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #f5f7fb;
+      color: #111827;
+      line-height: 1.5;
+    }
+
+    .wrapper {
+      max-width: 980px;
+      margin: 56px auto;
+      padding: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 36px;
+      box-shadow: 0 14px 44px rgba(17, 24, 39, 0.08);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 42px;
+      line-height: 1.03;
+      letter-spacing: -0.03em;
+      margin: 0 0 14px;
+      max-width: 760px;
+    }
+
+    .subtext {
+      font-size: 16px;
+      color: #4b5563;
+      margin-bottom: 30px;
+      max-width: 720px;
+    }
+
+    form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 15px;
+      background: #fff;
+      color: #111827;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #111827;
+      box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.06);
+    }
+
+    .helper {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: -2px;
+    }
+
+    button {
+      margin-top: 8px;
+      border: none;
+      border-radius: 14px;
+      padding: 16px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #111827;
+      color: white;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.12);
+    }
+
+    button:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .result {
+      margin-top: 30px;
+      padding: 28px;
+      border-radius: 18px;
+      display: none;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+    }
+
+    .result.show {
+      display: block;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+    }
+
+    .pill.low {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .pill.moderate {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .pill.high {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .result h2 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      max-width: 720px;
+    }
+
+    .result p {
+      margin: 0 0 14px;
+      color: #374151;
+    }
+
+    .impact-line {
+      margin-top: 8px;
+      margin-bottom: 18px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      color: #312e81;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .reasons {
+      margin-top: 6px;
+      padding-left: 18px;
+      color: #374151;
+    }
+
+    .compare-box {
+      margin-top: 22px;
+      padding: 22px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #0f172a, #111827);
+      color: white;
+    }
+
+    .compare-box h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      letter-spacing: -0.02em;
+    }
+
+    .compare-box p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .compare-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .compare-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.62);
+      margin-bottom: 6px;
+    }
+
+    .compare-value {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: white;
+    }
+
+    .cta-box {
+      margin-top: 22px;
+      padding: 22px;
+      border-radius: 16px;
+      background: #111827;
+      color: white;
+    }
+
+    .cta-box h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-box p {
+      margin: 0 0 14px;
+      color: rgba(255, 255, 255, 0.84);
+      max-width: 650px;
+    }
+
+    .cta-link {
+      display: inline-block;
+      text-decoration: none;
+      background: white;
+      color: #111827;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    .disclaimer {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 640px) {
+      .wrapper {
+        margin: 24px auto;
+        padding: 16px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 31px;
+        line-height: 1.08;
+      }
+
+      .result h2 {
+        font-size: 25px;
+      }
+
+      .compare-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+      <div class="eyebrow">PillarPath Tool</div>
+      <h1>Do I Need a Living Trust in California?</h1>
+      <p class="subtext">
+        Answer a few quick questions to estimate whether a living trust may make sense for your situation and why many California families use one to avoid probate friction.
+      </p>
+
+      <form id="trustForm">
+        <div class="field">
+          <label for="state">Do you live in California?</label>
+          <select id="state" required>
+            <option value="">Select one</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="realEstate">Do you own real estate?</label>
+          <select id="realEstate" required>
+            <option value="">Select one</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="estateSize">Is your estate likely worth more than $184,500?</label>
+          <select id="estateSize" required>
+            <option value="">Select one</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            <option value="notSure">Not sure</option>
+          </select>
+          <div class="helper">
+            This is a simplified educational question for California probate planning purposes.
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="married">Are you married?</label>
+          <select id="married" required>
+            <option value="">Select one</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="children">Do you have children?</label>
+          <select id="children" required>
+            <option value="">Select one</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="hasTrust">Do you already have a living trust?</label>
+          <select id="hasTrust" required>
+            <option value="">Select one</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            <option value="notSure">Not sure</option>
+          </select>
+        </div>
+
+        <button type="submit">See My Trust Estimate</button>
+      </form>
+
+      <div id="result" class="result">
+        <div id="impactPill" class="pill">HIGH LIKELIHOOD</div>
+        <h2 id="resultTitle"></h2>
+        <p id="resultSummary"></p>
+
+        <div id="impactLine" class="impact-line"></div>
+
+        <ul id="reasons" class="reasons"></ul>
+
+        <div class="compare-box">
+          <h3>Why many California families choose a trust</h3>
+          <p>
+            A properly created and funded living trust may help reduce delays, court involvement, and probate-related friction.
+          </p>
+
+          <div class="compare-grid">
+            <div class="compare-item">
+              <div class="compare-label">Probate</div>
+              <div class="compare-value">Often reduced or avoided</div>
+            </div>
+
+            <div class="compare-item">
+              <div class="compare-label">Privacy</div>
+              <div class="compare-value">Usually more private</div>
+            </div>
+
+            <div class="compare-item">
+              <div class="compare-label">Control</div>
+              <div class="compare-value">More structured planning</div>
+            </div>
+
+            <div class="compare-item">
+              <div class="compare-label">Family Experience</div>
+              <div class="compare-value">Often smoother</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          <h3>Want help deciding on the right next step?</h3>
+          <p>
+            PillarPath can help you understand whether a trust, will, or fuller estate plan makes the most sense for your assets, family setup, and goals.
+          </p>
+          <a href="#" class="cta-link">Talk Through My Options</a>
+        </div>
+
+        <p class="disclaimer">
+          This tool is for general educational purposes only and is not legal advice. It provides a simplified estimate, not a legal determination.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const trustForm = document.getElementById("trustForm");
+    const resultBox = document.getElementById("result");
+    const impactPill = document.getElementById("impactPill");
+    const resultTitle = document.getElementById("resultTitle");
+    const resultSummary = document.getElementById("resultSummary");
+    const impactLine = document.getElementById("impactLine");
+    const reasonsList = document.getElementById("reasons");
+
+    trustForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const state = document.getElementById("state").value;
+      const realEstate = document.getElementById("realEstate").value;
+      const estateSize = document.getElementById("estateSize").value;
+      const married = document.getElementById("married").value;
+      const children = document.getElementById("children").value;
+      const hasTrust = document.getElementById("hasTrust").value;
+
+      let score = 0;
+      let reasons = [];
+
+      if (hasTrust === "yes") {
+        score = 0;
+        reasons.push("You indicated that you already have a living trust in place.");
+      } else {
+        if (state === "yes") {
+          score += 2;
+          reasons.push("California probate planning is often an important reason families consider a trust.");
+        }
+
+        if (realEstate === "yes") {
+          score += 3;
+          reasons.push("Owning real estate often increases the practical value of trust planning.");
+        }
+
+        if (estateSize === "yes") {
+          score += 3;
+          reasons.push("An estate above California’s simplified threshold may create stronger probate concerns.");
+        } else if (estateSize === "notSure") {
+          score += 1;
+          reasons.push("Not knowing your estate size is common and may be a sign that a planning review would help.");
+        }
+
+        if (married === "yes") {
+          score += 1;
+          reasons.push("Marriage can make coordinated estate planning more useful.");
+        }
+
+        if (children === "yes") {
+          score += 2;
+          reasons.push("Having children often increases the importance of clear estate planning.");
+        }
+
+        if (hasTrust === "notSure") {
+          score += 1;
+          reasons.push("If you're not sure whether you already have a trust, a review may be worthwhile.");
+        }
+      }
+
+      let level = "";
+      let title = "";
+      let summary = "";
+      let impactText = "";
+
+      if (hasTrust === "yes") {
+        level = "low";
+        title = "You may already be in a stronger planning position";
+        summary = "Because you indicated that you already have a living trust, your need for a new trust may be lower. The bigger question may be whether your trust is current and properly funded.";
+        impactText = "A trust only works as intended if it has been properly created, updated when needed, and funded with the right assets.";
+      } else if (score <= 3) {
+        level = "low";
+        title = "Your current need for a trust may be lower";
+        summary = "Based on your answers, a living trust may not be as urgent right now, though basic estate planning could still be important.";
+        impactText = "That said, family changes, asset growth, or future real estate ownership could make trust planning more relevant later.";
+      } else if (score <= 7) {
+        level = "moderate";
+        title = "A living trust may be worth serious consideration";
+        summary = "Based on your answers, trust planning appears reasonably relevant and may help reduce future probate friction for your family.";
+        impactText = "If probate exposure is a concern, a trust may be worth reviewing before your asset picture gets more complicated.";
+      } else {
+        level = "high";
+        title = "You likely should strongly consider a living trust";
+        summary = "Based on your answers, a living trust appears likely to be a strong fit for your situation, especially if avoiding California probate is a major goal.";
+        impactText = "Without planning, your family may face more court involvement, delay, and administrative friction than necessary.";
+      }
+
+      impactPill.className = "pill " + level;
+      impactPill.textContent =
+        level === "low" ? "LOWER LIKELIHOOD" :
+        level === "moderate" ? "MODERATE LIKELIHOOD" :
+        "HIGH LIKELIHOOD";
+
+      resultTitle.textContent = title;
+      resultSummary.textContent = summary;
+      impactLine.textContent = impactText;
+
+      reasonsList.innerHTML = "";
+      reasons.forEach((reason) => {
+        const li = document.createElement("li");
+        li.textContent = reason;
+        reasonsList.appendChild(li);
+      });
+
+      resultBox.classList.add("show");
+      resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+</body>
+</html>
