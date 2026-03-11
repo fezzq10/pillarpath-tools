@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Do I Need a Living Trust? | Pillar</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #f5f7fb;
+      color: #111827;
+      line-height: 1.5;
+    }
+
+    .wrapper {
+      max-width: 760px;
+      margin: 60px auto;
+      padding: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 12px 40px rgba(17, 24, 39, 0.08);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 36px;
+      line-height: 1.1;
+      margin: 0 0 12px;
+      color: #111827;
+    }
+
+    .subtext {
+      font-size: 16px;
+      color: #4b5563;
+      margin-bottom: 28px;
+      max-width: 580px;
+    }
+
+    form {
+      display: grid;
+      gap: 20px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 15px;
+      background: #fff;
+      color: #111827;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #111827;
+    }
+
+    button {
+      margin-top: 8px;
+      border: none;
+      border-radius: 14px;
+      padding: 16px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #111827;
+      color: white;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    button:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .result {
+      margin-top: 28px;
+      padding: 24px;
+      border-radius: 16px;
+      display: none;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+    }
+
+    .result.show {
+      display: block;
+    }
+
+    .score-badge {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .low {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .moderate {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .strong {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .result h2 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .result p {
+      margin: 0 0 12px;
+      color: #374151;
+    }
+
+    .reasons {
+      margin: 16px 0 20px;
+      padding-left: 18px;
+      color: #374151;
+    }
+
+    .cta-box {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 14px;
+      background: #111827;
+      color: #ffffff;
+    }
+
+    .cta-box h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .cta-box p {
+      margin: 0 0 14px;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .cta-link {
+      display: inline-block;
+      text-decoration: none;
+      background: white;
+      color: #111827;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    .disclaimer {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 640px) {
+      .wrapper {
+        margin: 24px auto;
+        padding: 16px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .result h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+      <div class="eyebrow">Pillar Tool</div>
+      <h1>Do You Need a Living Trust?</h1>
+      <p class="subtext">
+        Answer a few quick questions to get a simple estimate of whether a living trust may make sense for your situation.
+      </p>
+
+      <form id="trustForm">
+        <div class="field">
+          <label for="state">What state do you live in?</label>
+          <select id="state" required>
+            <option value="">Select your state</option>
+            <option value="CA">California</option>
+            <option value="TX">Texas</option>
+            <option value="FL">Florida</option>
+            <option value="NY">New York</option>
+            <option value="OTHER">Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="realEstate">Do you own real estate?</label>
+          <select id="realEstate" required>
+            <option value="">Select one</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="assets">Approximate total assets</label>
+          <select id="assets" required>
+            <option value="">Select a range</option>
+            <option value="under100">$0 – $99,999</option>
+            <option value="100to300">$100,000 – $299,999</option>
+            <option value="300to750">$300,000 – $749,999</option>
+            <option value="750plus">$750,000+</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="maritalStatus">Marital status</label>
+          <select id="maritalStatus" required>
+            <option value="">Select one</option>
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="children">Do you have children?</label>
+          <select id="children" required>
+            <option value="">Select one</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        <button type="submit">See My Result</button>
+      </form>
+
+      <div id="result" class="result">
+        <div id="badge" class="score-badge"></div>
+        <h2 id="resultTitle"></h2>
+        <p id="resultSummary"></p>
+        <ul id="reasons" class="reasons"></ul>
+
+        <div class="cta-box">
+          <h3>Want a clearer answer?</h3>
+          <p>
+            A quick consultation can help determine whether a living trust, will, or full estate plan makes the most sense for your goals.
+          </p>
+          <a href="#" class="cta-link">Schedule a Consultation</a>
+        </div>
+
+        <p class="disclaimer">
+          This tool is for general educational purposes only and is not legal advice.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("trustForm");
+    const resultBox = document.getElementById("result");
+    const badge = document.getElementById("badge");
+    const resultTitle = document.getElementById("resultTitle");
+    const resultSummary = document.getElementById("resultSummary");
+    const reasonsList = document.getElementById("reasons");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const state = document.getElementById("state").value;
+      const realEstate = document.getElementById("realEstate").value;
+      const assets = document.getElementById("assets").value;
+      const maritalStatus = document.getElementById("maritalStatus").value;
+      const children = document.getElementById("children").value;
+
+      let score = 0;
+      let reasons = [];
+
+      if (state === "CA") {
+        score += 2;
+        reasons.push("You live in California, where avoiding probate is often a major planning goal.");
+      } else if (state !== "") {
+        score += 1;
+        reasons.push("Your state may still make trust planning helpful depending on your assets and family situation.");
+      }
+
+      if (realEstate === "yes") {
+        score += 3;
+        reasons.push("Owning real estate often makes a living trust more useful.");
+      }
+
+      if (assets === "100to300") {
+        score += 1;
+        reasons.push("Your asset level suggests some planning may be worth considering.");
+      } else if (assets === "300to750") {
+        score += 2;
+        reasons.push("Your asset level increases the value of organized estate planning.");
+      } else if (assets === "750plus") {
+        score += 3;
+        reasons.push("Higher-value estates are often stronger candidates for trust planning.");
+      }
+
+      if (maritalStatus === "married") {
+        score += 1;
+        reasons.push("Marriage can make coordinated planning and smoother asset transfer more important.");
+      }
+
+      if (children === "yes") {
+        score += 2;
+        reasons.push("Having children increases the importance of clear planning and control over distribution.");
+      }
+
+      let level = "";
+      let title = "";
+      let summary = "";
+
+      if (score <= 3) {
+        level = "low";
+        title = "Low to Moderate Need";
+        summary = "Based on your answers, a living trust may not be urgent, but basic estate planning is still important. A will and related documents may be enough for some situations.";
+      } else if (score <= 7) {
+        level = "moderate";
+        title = "Moderate Need";
+        summary = "Based on your answers, a living trust may be worth serious consideration. Your assets or family situation suggest you may benefit from stronger planning.";
+      } else {
+        level = "strong";
+        title = "Strong Need";
+        summary = "Based on your answers, a living trust appears likely to be a strong fit. Your profile suggests probate avoidance, privacy, and smoother asset transfer may matter significantly.";
+      }
+
+      badge.className = "score-badge " + level;
+      badge.textContent = level === "low" ? "LOW / MODERATE" : level === "moderate" ? "MODERATE" : "STRONG";
+
+      resultTitle.textContent = title;
+      resultSummary.textContent = summary;
+
+      reasonsList.innerHTML = "";
+      reasons.forEach((reason) => {
+        const li = document.createElement("li");
+        li.textContent = reason;
+        reasonsList.appendChild(li);
+      });
+
+      resultBox.classList.add("show");
+      resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+</body>
+</html>

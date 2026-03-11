@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will My Family Have to Go Through Probate in California? | PillarPath</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #f5f7fb;
+      color: #111827;
+      line-height: 1.5;
+    }
+
+    .wrapper {
+      max-width: 1100px;
+      margin: 56px auto;
+      padding: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 36px;
+      box-shadow: 0 14px 44px rgba(17, 24, 39, 0.08);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 42px;
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      margin: 0 0 14px;
+      color: #111827;
+      max-width: 760px;
+    }
+
+    .subtext {
+      font-size: 16px;
+      color: #4b5563;
+      margin-bottom: 30px;
+      max-width: 700px;
+    }
+
+    form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 15px;
+      background: #fff;
+      color: #111827;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #111827;
+      box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.06);
+    }
+
+    .helper {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: -2px;
+    }
+
+    button {
+      margin-top: 8px;
+      border: none;
+      border-radius: 14px;
+      padding: 16px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #111827;
+      color: white;
+      transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.12);
+    }
+
+    button:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .result {
+      margin-top: 30px;
+      padding: 28px;
+      border-radius: 18px;
+      display: none;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+    }
+
+    .result.show {
+      display: block;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+    }
+
+    .pill.low {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .pill.possible {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .pill.likely {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .result h2 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      max-width: 720px;
+    }
+
+    .result p {
+      margin: 0 0 14px;
+      color: #374151;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 22px 0 14px;
+    }
+
+    .stat {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 15px;
+      padding: 20px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 31px;
+      font-weight: 800;
+      color: #111827;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .impact-line {
+      margin-top: 8px;
+      margin-bottom: 18px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      color: #312e81;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .breakdown {
+      margin-top: 6px;
+      padding-left: 18px;
+      color: #374151;
+    }
+
+    .warning-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 14px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+    }
+
+    .warning-box h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: #9a3412;
+    }
+
+    .warning-box p {
+      margin: 0;
+      color: #7c2d12;
+    }
+
+    .compare-box {
+      margin-top: 22px;
+      padding: 22px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #0f172a, #111827);
+      color: white;
+    }
+
+    .compare-box h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      letter-spacing: -0.02em;
+    }
+
+    .compare-box p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .compare-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .compare-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.62);
+      margin-bottom: 6px;
+    }
+
+    .compare-value {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: white;
+    }
+
+    .cta-box {
+      margin-top: 22px;
+      padding: 22px;
+      border-radius: 16px;
+      background: #111827;
+      color: white;
+    }
+
+    .cta-box h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-box p {
+      margin: 0 0 14px;
+      color: rgba(255, 255, 255, 0.84);
+      max-width: 650px;
+    }
+
+    .cta-link {
+      display: inline-block;
+      text-decoration: none;
+      background: white;
+      color: #111827;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .cta-link:hover {
+      opacity: 0.94;
+      transform: translateY(-1px);
+    }
+
+    .disclaimer {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 640px) {
+      .wrapper {
+        margin: 24px auto;
+        padding: 16px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 31px;
+        line-height: 1.08;
+      }
+
+      .result h2 {
+        font-size: 25px;
+      }
+
+      .stats,
+      .compare-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-value {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+      <div class="eyebrow">PillarPath Tool</div>
+      <h1>Will My Family Have to Go Through Probate in California?</h1>
+      <p class="subtext">
+        Estimate whether your estate may be exposed to California probate, what the statutory fees could look like, and how a properly funded living trust may change the outcome.
+      </p>
+
+      <form id="probateForm">
+        <div class="field">
+          <label for="estateValue">Estimated gross estate value</label>
+          <input
+            type="number"
+            id="estateValue"
+            placeholder="Example: 900000"
+            min="0"
+            step="1000"
+            required
+          />
+          <div class="helper">
+            Use the approximate gross value of assets that may be part of the probate estate before debts.
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="homeowner">Do you own real estate?</label>
+          <select id="homeowner" required>
+            <option value="">Select one</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="hasTrust">Do you already have a properly funded living trust?</label>
+          <select id="hasTrust" required>
+            <option value="">Select one</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            <option value="notSure">Not sure</option>
+          </select>
+        </div>
+
+        <button type="submit">See My Probate Estimate</button>
+      </form>
+
+      <div id="result" class="result">
+        <div id="impactPill" class="pill">LIKELY EXPOSURE</div>
+        <h2 id="resultTitle"></h2>
+        <p id="resultSummary"></p>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-label">Estimated Attorney Fee</div>
+            <div class="stat-value" id="attorneyFee">$0</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-label">Estimated Executor Fee</div>
+            <div class="stat-value" id="executorFee">$0</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-label">Combined Estimated Statutory Fees</div>
+            <div class="stat-value" id="totalFee">$0</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-label">Estimated Timeline</div>
+            <div class="stat-value" id="timeline">9–18 mo</div>
+          </div>
+        </div>
+
+        <div id="impactLine" class="impact-line"></div>
+
+        <ul class="breakdown" id="breakdown"></ul>
+
+        <div class="warning-box">
+          <h3>What this number does not include</h3>
+          <p>
+            Court filing costs, appraisal fees, publication fees, extraordinary fees, delays, and the stress of a public court process may increase the real impact beyond the estimate shown above.
+          </p>
+        </div>
+
+        <div class="compare-box">
+          <h3>With a properly funded living trust</h3>
+          <p>
+            Many families use trust planning to reduce court involvement, delays, and probate-related friction.
+          </p>
+
+          <div class="compare-grid">
+            <div class="compare-item">
+              <div class="compare-label">Probate</div>
+              <div class="compare-value" id="compareProbate">Often avoided</div>
+            </div>
+
+            <div class="compare-item">
+              <div class="compare-label">Court involvement</div>
+              <div class="compare-value">Usually reduced</div>
+            </div>
+
+            <div class="compare-item">
+              <div class="compare-label">Privacy</div>
+              <div class="compare-value">Typically more private</div>
+            </div>
+
+            <div class="compare-item">
+              <div class="compare-label">Family access</div>
+              <div class="compare-value">Often smoother</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          <h3>Want to reduce your family’s probate risk?</h3>
+          <p>
+            PillarPath can help you understand whether a living trust, will, or fuller estate plan makes sense based on your assets, family setup, and goals.
+          </p>
+          <a href="#" class="cta-link">Talk Through My Options</a>
+        </div>
+
+        <p class="disclaimer">
+          This tool is for general educational purposes only and is not legal advice. Results are simplified estimates and may not reflect your exact legal situation.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const probateForm = document.getElementById("probateForm");
+    const resultBox = document.getElementById("result");
+    const impactPill = document.getElementById("impactPill");
+    const resultTitle = document.getElementById("resultTitle");
+    const resultSummary = document.getElementById("resultSummary");
+    const attorneyFeeEl = document.getElementById("attorneyFee");
+    const executorFeeEl = document.getElementById("executorFee");
+    const totalFeeEl = document.getElementById("totalFee");
+    const timelineEl = document.getElementById("timeline");
+    const breakdownEl = document.getElementById("breakdown");
+    const compareProbateEl = document.getElementById("compareProbate");
+    const impactLineEl = document.getElementById("impactLine");
+
+    function formatCurrency(num) {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0
+      }).format(num);
+    }
+
+    function calculateCaliforniaStatutoryFee(value) {
+      let fee = 0;
+
+      if (value <= 100000) {
+        fee += value * 0.04;
+      } else {
+        fee += 100000 * 0.04;
+      }
+
+      if (value > 100000) {
+        if (value <= 200000) {
+          fee += (value - 100000) * 0.03;
+        } else {
+          fee += 100000 * 0.03;
+        }
+      }
+
+      if (value > 200000) {
+        if (value <= 1000000) {
+          fee += (value - 200000) * 0.02;
+        } else {
+          fee += 800000 * 0.02;
+        }
+      }
+
+      if (value > 1000000) {
+        if (value <= 10000000) {
+          fee += (value - 1000000) * 0.01;
+        } else {
+          fee += 9000000 * 0.01;
+        }
+      }
+
+      if (value > 10000000) {
+        if (value <= 25000000) {
+          fee += (value - 10000000) * 0.005;
+        } else {
+          fee += 15000000 * 0.005;
+        }
+      }
+
+      if (value > 25000000) {
+        fee += (value - 25000000) * 0.0025;
+      }
+
+      return fee;
+    }
+
+    function getTimeline(value) {
+      if (value < 500000) return "9–12 mo";
+      if (value < 1500000) return "12–18 mo";
+      return "15–24+ mo";
+    }
+
+    function getExposureLevel(value, homeowner, hasTrust) {
+      if (hasTrust === "yes") {
+        return "low";
+      }
+
+      if (value >= 250000 || homeowner === "yes") {
+        return "likely";
+      }
+
+      return "possible";
+    }
+
+    probateForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const estateValue = Number(document.getElementById("estateValue").value);
+      const homeowner = document.getElementById("homeowner").value;
+      const hasTrust = document.getElementById("hasTrust").value;
+
+      if (!estateValue || estateValue <= 0) {
+        alert("Please enter a valid estate value.");
+        return;
+      }
+
+      const attorneyFee = calculateCaliforniaStatutoryFee(estateValue);
+      const executorFee = calculateCaliforniaStatutoryFee(estateValue);
+      const totalFee = attorneyFee + executorFee;
+      const timeline = getTimeline(estateValue);
+      const exposure = getExposureLevel(estateValue, homeowner, hasTrust);
+
+      let title = "";
+      let summary = "";
+      let pillText = "";
+      let pillClass = "pill ";
+      let compareProbateText = "Often avoided";
+      let impactLineText = "";
+      let breakdownItems = [];
+
+      if (exposure === "low") {
+        pillText = "LOWER EXPOSURE";
+        pillClass += "low";
+        title = "Your probate exposure may be lower";
+        summary = "Because you indicated that you already have a properly funded living trust, your family may be in a stronger position to reduce or avoid probate-related court involvement.";
+        compareProbateText = "Potentially already addressed";
+        impactLineText = `Even so, any assets left outside the trust could still create probate exposure, so periodic review matters.`;
+        breakdownItems = [
+          "A trust only helps if it is properly created and funded.",
+          "Assets left outside the trust may still create probate exposure.",
+          "Periodic review is still important as assets and family circumstances change."
+        ];
+      } else if (exposure === "possible") {
+        pillText = "POSSIBLE EXPOSURE";
+        pillClass += "possible";
+        title = "Your estate may have some California probate exposure";
+        summary = "Based on your answers, probate may still be a possibility depending on how your assets are titled and whether they pass outside of probate.";
+        impactLineText = `If probate is required, statutory fees alone could reach about ${formatCurrency(totalFee)} before other case-related expenses are added.`;
+        breakdownItems = [
+          "Even modest estates can face probate depending on asset structure and title.",
+          "The estimate below shows what statutory fees could look like if probate is required.",
+          "Reviewing ownership and beneficiary designations may reduce risk."
+        ];
+      } else {
+        pillText = "LIKELY EXPOSURE";
+        pillClass += "likely";
+        title = "Your estate appears likely to face California probate";
+        summary = "Based on your answers, your estate appears more likely to face California probate unless planning steps are taken to reduce that exposure.";
+        impactLineText = `That means probate could cost your family around ${formatCurrency(totalFee)} in statutory fees alone before other case-related expenses are added.`;
+        breakdownItems = [
+          "Owning real estate can increase the chance that probate becomes a real issue.",
+          "California probate fees are based on gross estate value, not net value after debts.",
+          "The estimate below reflects ordinary statutory fees only and does not include other case-specific costs."
+        ];
+      }
+
+      impactPill.className = pillClass;
+      impactPill.textContent = pillText;
+
+      resultTitle.textContent = title;
+      resultSummary.textContent = summary;
+
+      attorneyFeeEl.textContent = formatCurrency(attorneyFee);
+      executorFeeEl.textContent = formatCurrency(executorFee);
+      totalFeeEl.textContent = formatCurrency(totalFee);
+      timelineEl.textContent = timeline;
+      compareProbateEl.textContent = compareProbateText;
+      impactLineEl.textContent = impactLineText;
+
+      breakdownEl.innerHTML = "";
+      breakdownItems.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        breakdownEl.appendChild(li);
+      });
+
+      resultBox.classList.add("show");
+      resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+</body>
+</html>
