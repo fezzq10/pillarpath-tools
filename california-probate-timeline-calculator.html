@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pillar Probate Timeline Calculator</title>
+
+<style>
+*{box-sizing:border-box;}
+
+body{
+margin:0;
+font-family:Inter, Arial, sans-serif;
+background:#f5f7fb;
+color:#111827;
+}
+
+.wrapper{
+max-width:920px;
+margin:60px auto;
+padding:24px;
+}
+
+.card{
+background:white;
+padding:36px;
+border-radius:22px;
+box-shadow:0 14px 44px rgba(0,0,0,0.08);
+}
+
+.eyebrow{
+font-size:12px;
+font-weight:700;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:#6b7280;
+margin-bottom:12px;
+}
+
+h1{
+font-size:40px;
+line-height:1.05;
+margin:0 0 14px;
+}
+
+p.sub{
+color:#4b5563;
+margin-bottom:28px;
+}
+
+form{
+display:grid;
+gap:18px;
+}
+
+label{
+font-weight:600;
+font-size:14px;
+}
+
+select,input{
+padding:14px;
+border-radius:12px;
+border:1px solid #d1d5db;
+font-size:15px;
+}
+
+button{
+margin-top:10px;
+border:none;
+background:#111827;
+color:white;
+padding:16px;
+border-radius:14px;
+font-weight:700;
+cursor:pointer;
+}
+
+button:hover{
+opacity:.9;
+}
+
+.result{
+margin-top:30px;
+display:none;
+padding:28px;
+border-radius:18px;
+background:#f9fafb;
+border:1px solid #e5e7eb;
+}
+
+.result.show{
+display:block;
+}
+
+.timeline{
+font-size:34px;
+font-weight:800;
+margin-bottom:10px;
+}
+
+.cta{
+margin-top:18px;
+padding:18px;
+border-radius:14px;
+background:#111827;
+color:white;
+}
+
+.cta a{
+display:inline-block;
+margin-top:10px;
+background:white;
+color:#111827;
+padding:10px 14px;
+border-radius:10px;
+text-decoration:none;
+font-weight:700;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="card">
+
+<div class="eyebrow">Pillar Tool</div>
+
+<h1>California Probate Timeline Calculator</h1>
+
+<p class="sub">
+Estimate how long probate might take in California based on a few common factors.
+</p>
+
+<form id="timelineForm">
+
+<div>
+<label>Is there a valid will?</label>
+<select id="will">
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+</div>
+
+<div>
+<label>Estimated estate value</label>
+<select id="estate">
+<option value="small">Under $500k</option>
+<option value="medium">$500k – $2M</option>
+<option value="large">Over $2M</option>
+</select>
+</div>
+
+<div>
+<label>Number of beneficiaries</label>
+<select id="beneficiaries">
+<option value="few">1–2</option>
+<option value="several">3–5</option>
+<option value="many">6+</option>
+</select>
+</div>
+
+<div>
+<label>Is real estate involved?</label>
+<select id="realestate">
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+</div>
+
+<button type="submit">Estimate Probate Timeline</button>
+
+</form>
+
+<div id="result" class="result">
+
+<div class="timeline" id="timelineOutput"></div>
+
+<p id="timelineText"></p>
+
+<div class="cta">
+Avoiding probate delays is one reason many families create a living trust.
+
+<br>
+
+<a href="#">Talk to Pillar about your options</a>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+const form = document.getElementById("timelineForm");
+const result = document.getElementById("result");
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let months = 9;
+
+const will = document.getElementById("will").value;
+const estate = document.getElementById("estate").value;
+const beneficiaries = document.getElementById("beneficiaries").value;
+const realestate = document.getElementById("realestate").value;
+
+if(will === "no") months += 3;
+
+if(estate === "medium") months += 3;
+if(estate === "large") months += 6;
+
+if(beneficiaries === "several") months += 2;
+if(beneficiaries === "many") months += 4;
+
+if(realestate === "yes") months += 3;
+
+let min = months;
+let max = months + 6;
+
+document.getElementById("timelineOutput").innerText =
+min + " – " + max + " months";
+
+document.getElementById("timelineText").innerText =
+"Based on your inputs, probate could reasonably take around " +
+min + " to " + max + " months in California. Court schedules, creditor claims, and asset complexity can extend timelines.";
+
+result.classList.add("show");
+
+result.scrollIntoView({behavior:"smooth"});
+
+});
+
+</script>
+
+</body>
+</html>
