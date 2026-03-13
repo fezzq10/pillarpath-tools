@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pillar | California Probate Threshold Calculator</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #f5f7fb;
+      color: #111827;
+      line-height: 1.5;
+    }
+
+    .wrapper {
+      max-width: 980px;
+      margin: 56px auto;
+      padding: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 36px;
+      box-shadow: 0 14px 44px rgba(17, 24, 39, 0.08);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 42px;
+      line-height: 1.03;
+      letter-spacing: -0.03em;
+      margin: 0 0 14px;
+      max-width: 780px;
+    }
+
+    .subtext {
+      font-size: 16px;
+      color: #4b5563;
+      margin-bottom: 30px;
+      max-width: 760px;
+    }
+
+    form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 15px;
+      background: #fff;
+      color: #111827;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #111827;
+      box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.06);
+    }
+
+    .helper {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: -2px;
+    }
+
+    button {
+      margin-top: 8px;
+      border: none;
+      border-radius: 14px;
+      padding: 16px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #111827;
+      color: white;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.12);
+    }
+
+    button:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .result {
+      margin-top: 30px;
+      padding: 28px;
+      border-radius: 18px;
+      display: none;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+    }
+
+    .result.show {
+      display: block;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+    }
+
+    .pill.low {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .pill.mid {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .pill.high {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .result h2 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      max-width: 760px;
+    }
+
+    .result p {
+      margin: 0 0 14px;
+      color: #374151;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 22px 0 14px;
+    }
+
+    .stat {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 15px;
+      padding: 20px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 31px;
+      font-weight: 800;
+      color: #111827;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .impact-line {
+      margin-top: 8px;
+      margin-bottom: 18px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      color: #312e81;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .warning-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 14px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+    }
+
+    .warning-box h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: #9a3412;
+    }
+
+    .warning-box p {
+      margin: 0;
+      color: #7c2d12;
+    }
+
+    .cta-box {
+      margin-top: 22px;
+      padding: 22px;
+      border-radius: 16px;
+      background: #111827;
+      color: white;
+    }
+
+    .cta-box h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-box p {
+      margin: 0 0 14px;
+      color: rgba(255, 255, 255, 0.84);
+      max-width: 650px;
+    }
+
+    .cta-link {
+      display: inline-block;
+      text-decoration: none;
+      background: white;
+      color: #111827;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    .disclaimer {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 640px) {
+      .wrapper {
+        margin: 24px auto;
+        padding: 16px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 31px;
+        line-height: 1.08;
+      }
+
+      .result h2 {
+        font-size: 25px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-value {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+      <div class="eyebrow">Pillar Tool</div>
+      <h1>California Probate Threshold Calculator</h1>
+      <p class="subtext">
+        Estimate whether an estate may be below, near, or above California’s probate threshold based on a simplified asset total.
+      </p>
+
+      <form id="thresholdForm">
+        <div class="field">
+          <label for="realEstate">Estimated real estate value</label>
+          <input type="number" id="realEstate" placeholder="Example: 750000" min="0" step="1000" />
+        </div>
+
+        <div class="field">
+          <label for="bankAccounts">Bank accounts / cash</label>
+          <input type="number" id="bankAccounts" placeholder="Example: 25000" min="0" step="1000" />
+        </div>
+
+        <div class="field">
+          <label for="investments">Investments</label>
+          <input type="number" id="investments" placeholder="Example: 120000" min="0" step="1000" />
+        </div>
+
+        <div class="field">
+          <label for="vehicles">Vehicles / personal property</label>
+          <input type="number" id="vehicles" placeholder="Example: 30000" min="0" step="1000" />
+        </div>
+
+        <div class="field">
+          <label for="otherAssets">Other assets</label>
+          <input type="number" id="otherAssets" placeholder="Example: 10000" min="0" step="1000" />
+          <div class="helper">
+            This is a simplified educational estimate and does not account for title, beneficiary designations, or non-probate transfers.
+          </div>
+        </div>
+
+        <button type="submit">See My Threshold Estimate</button>
+      </form>
+
+      <div id="result" class="result">
+        <div id="impactPill" class="pill">LIKELY ABOVE THRESHOLD</div>
+        <h2 id="resultTitle"></h2>
+        <p id="resultSummary"></p>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-label">Estimated Asset Total</div>
+            <div class="stat-value" id="assetTotal">$0</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-label">California Threshold Used</div>
+            <div class="stat-value" id="thresholdValue">$184,500</div>
+          </div>
+        </div>
+
+        <div id="impactLine" class="impact-line"></div>
+
+        <div class="warning-box">
+          <h3>Important limitation</h3>
+          <p>
+            Probate exposure does not depend only on raw asset totals. Title, beneficiary designations, trust funding, and whether assets pass outside probate can all change the outcome.
+          </p>
+        </div>
+
+        <div class="cta-box">
+          <h3>Want a clearer answer on probate exposure?</h3>
+          <p>
+            Pillar can help you understand whether an estate may face probate and whether a living trust or fuller plan may reduce that risk.
+          </p>
+          <a href="#" class="cta-link">Talk Through My Options</a>
+        </div>
+
+        <p class="disclaimer">
+          This tool is for general educational purposes only and is not legal advice. It provides a simplified estimate, not a legal determination.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("thresholdForm");
+    const resultBox = document.getElementById("result");
+    const impactPill = document.getElementById("impactPill");
+    const resultTitle = document.getElementById("resultTitle");
+    const resultSummary = document.getElementById("resultSummary");
+    const assetTotalEl = document.getElementById("assetTotal");
+    const thresholdValueEl = document.getElementById("thresholdValue");
+    const impactLineEl = document.getElementById("impactLine");
+
+    const CALIFORNIA_THRESHOLD = 184500;
+
+    function formatCurrency(num) {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0
+      }).format(num);
+    }
+
+    function getNumber(id) {
+      return Number(document.getElementById(id).value) || 0;
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const realEstate = getNumber("realEstate");
+      const bankAccounts = getNumber("bankAccounts");
+      const investments = getNumber("investments");
+      const vehicles = getNumber("vehicles");
+      const otherAssets = getNumber("otherAssets");
+
+      const total = realEstate + bankAccounts + investments + vehicles + otherAssets;
+
+      let title = "";
+      let summary = "";
+      let impact = "";
+      let pillClass = "pill ";
+      let pillText = "";
+
+      if (total < CALIFORNIA_THRESHOLD * 0.85) {
+        pillClass += "low";
+        pillText = "LIKELY BELOW THRESHOLD";
+        title = "Your estate may be below California’s probate threshold";
+        summary = "Based on the asset values you entered, the estate may fall below the simplified threshold used by this tool. That may reduce probate exposure, depending on how assets are titled and transferred.";
+        impact = "Even if the total appears below the threshold, probate risk can still depend on asset structure, title, and whether property passes outside probate.";
+      } else if (total <= CALIFORNIA_THRESHOLD * 1.15) {
+        pillClass += "mid";
+        pillText = "POSSIBLY NEAR THRESHOLD";
+        title = "Your estate may be near California’s probate threshold";
+        summary = "Based on the values entered, the estate appears close enough to the threshold that probate exposure may depend heavily on title, exclusions, and how assets are held.";
+        impact = "When an estate is near the threshold, small changes in valuation or asset structure can change the outcome significantly.";
+      } else {
+        pillClass += "high";
+        pillText = "LIKELY ABOVE THRESHOLD";
+        title = "Your estate likely exceeds California’s probate threshold";
+        summary = "Based on the values entered, the estate appears more likely to exceed the simplified threshold used by this tool, which may increase probate exposure unless planning steps are in place.";
+        impact = "If these assets are part of the probate estate, your family may face more court involvement, delay, and administrative cost than expected.";
+      }
+
+      impactPill.className = pillClass;
+      impactPill.textContent = pillText;
+      resultTitle.textContent = title;
+      resultSummary.textContent = summary;
+      assetTotalEl.textContent = formatCurrency(total);
+      thresholdValueEl.textContent = formatCurrency(CALIFORNIA_THRESHOLD);
+      impactLineEl.textContent = impact;
+
+      resultBox.classList.add("show");
+      resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+</body>
+</html>
