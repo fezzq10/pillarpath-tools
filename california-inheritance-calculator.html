@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pillar | California Inheritance Calculator</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #f5f7fb;
+      color: #111827;
+      line-height: 1.5;
+    }
+
+    .wrapper {
+      max-width: 980px;
+      margin: 56px auto;
+      padding: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 36px;
+      box-shadow: 0 14px 44px rgba(17, 24, 39, 0.08);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 42px;
+      line-height: 1.03;
+      letter-spacing: -0.03em;
+      margin: 0 0 14px;
+      max-width: 780px;
+    }
+
+    .subtext {
+      font-size: 16px;
+      color: #4b5563;
+      margin-bottom: 30px;
+      max-width: 760px;
+    }
+
+    .step {
+      display: none;
+      margin-top: 18px;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    .step h2 {
+      font-size: 24px;
+      margin: 0 0 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .option-btn, .nav-btn {
+      border: 1px solid #d1d5db;
+      background: #fff;
+      color: #111827;
+      border-radius: 14px;
+      padding: 16px 18px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .option-btn:hover, .nav-btn:hover {
+      border-color: #111827;
+      transform: translateY(-1px);
+    }
+
+    .option-btn.selected {
+      border-color: #111827;
+      box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.06);
+      background: #f9fafb;
+    }
+
+    .nav-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .nav-btn.primary {
+      background: #111827;
+      color: white;
+      border: none;
+    }
+
+    .progress {
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #111827;
+      transition: width 0.2s ease;
+    }
+
+    .result {
+      display: none;
+      margin-top: 24px;
+      padding: 28px;
+      border-radius: 18px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+    }
+
+    .result.show {
+      display: block;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+      background: #eef2ff;
+      color: #312e81;
+    }
+
+    .result h2 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      max-width: 760px;
+    }
+
+    .result p {
+      margin: 0 0 14px;
+      color: #374151;
+    }
+
+    .distribution-box {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+    }
+
+    .distribution-box h3 {
+      margin: 0 0 10px;
+      font-size: 19px;
+      letter-spacing: -0.02em;
+    }
+
+    .distribution-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .impact-line {
+      margin-top: 16px;
+      margin-bottom: 18px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #9a3412;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .cta-box {
+      margin-top: 22px;
+      padding: 22px;
+      border-radius: 16px;
+      background: #111827;
+      color: white;
+    }
+
+    .cta-box h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-box p {
+      margin: 0 0 14px;
+      color: rgba(255, 255, 255, 0.84);
+      max-width: 650px;
+    }
+
+    .cta-link {
+      display: inline-block;
+      text-decoration: none;
+      background: white;
+      color: #111827;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    .disclaimer {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 640px) {
+      .wrapper {
+        margin: 24px auto;
+        padding: 16px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 31px;
+        line-height: 1.08;
+      }
+
+      .step h2, .result h2 {
+        font-size: 25px;
+      }
+
+      .nav-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+      <div class="eyebrow">Pillar Tool</div>
+      <h1>Who Inherits If There Is No Will in California?</h1>
+      <p class="subtext">
+        Answer a few quick questions for a simplified estimate of how California inheritance rules may distribute property when someone dies without a will.
+      </p>
+
+      <div class="progress">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+
+      <div id="flow">
+        <div class="step active" data-step="1">
+          <h2>Was the person married or in a registered domestic partnership?</h2>
+          <div class="options">
+            <button class="option-btn" data-field="spouse" data-value="yes">Yes</button>
+            <button class="option-btn" data-field="spouse" data-value="no">No</button>
+          </div>
+        </div>
+
+        <div class="step" data-step="2">
+          <h2>Did the person leave any children or descendants of deceased children?</h2>
+          <div class="options">
+            <button class="option-btn" data-field="children" data-value="none">No children or descendants</button>
+            <button class="option-btn" data-field="children" data-value="one">One child (or descendants of one deceased child)</button>
+            <button class="option-btn" data-field="children" data-value="multiple">More than one child line</button>
+          </div>
+        </div>
+
+        <div class="step" data-step="3">
+          <h2>Are either parent(s) still alive?</h2>
+          <div class="options">
+            <button class="option-btn" data-field="parents" data-value="yes">Yes</button>
+            <button class="option-btn" data-field="parents" data-value="no">No</button>
+          </div>
+        </div>
+
+        <div class="step" data-step="4">
+          <h2>Are any siblings or descendants of deceased siblings alive?</h2>
+          <div class="options">
+            <button class="option-btn" data-field="siblings" data-value="yes">Yes</button>
+            <button class="option-btn" data-field="siblings" data-value="no">No</button>
+          </div>
+        </div>
+
+        <div class="step" data-step="5">
+          <h2>Was there community property with a spouse or partner?</h2>
+          <div class="options">
+            <button class="option-btn" data-field="communityProperty" data-value="yes">Yes</button>
+            <button class="option-btn" data-field="communityProperty" data-value="no">No / Not sure</button>
+          </div>
+        </div>
+
+        <div class="step" data-step="6">
+          <h2>Was there separate property?</h2>
+          <div class="options">
+            <button class="option-btn" data-field="separateProperty" data-value="yes">Yes</button>
+            <button class="option-btn" data-field="separateProperty" data-value="no">No / Not sure</button>
+          </div>
+        </div>
+
+        <div class="nav-row">
+          <button id="backBtn" class="nav-btn" type="button">Back</button>
+          <button id="nextBtn" class="nav-btn primary" type="button">Next</button>
+        </div>
+      </div>
+
+      <div id="result" class="result">
+        <div class="pill">SIMPLIFIED ESTIMATE</div>
+        <h2 id="resultTitle"></h2>
+        <p id="resultSummary"></p>
+
+        <div class="distribution-box">
+          <h3>Estimated inheritance outcome</h3>
+          <ul id="distributionList"></ul>
+        </div>
+
+        <div id="impactLine" class="impact-line"></div>
+
+        <div class="cta-box">
+          <h3>Want to avoid this kind of uncertainty?</h3>
+          <p>
+            Without a clear estate plan, California inheritance rules can control who receives what. Pillar can help you understand how a trust or fuller plan may change that.
+          </p>
+          <a href="#" class="cta-link">Talk Through My Options</a>
+        </div>
+
+        <p class="disclaimer">
+          This tool is for general educational purposes only and is not legal advice. It simplifies California intestate succession rules and does not cover every fact pattern, exception, title issue, or non-probate asset.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const answers = {
+      spouse: null,
+      children: null,
+      parents: null,
+      siblings: null,
+      communityProperty: null,
+      separateProperty: null
+    };
+
+    const steps = Array.from(document.querySelectorAll(".step"));
+    const progressFill = document.getElementById("progressFill");
+    const backBtn = document.getElementById("backBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const resultBox = document.getElementById("result");
+    const flow = document.getElementById("flow");
+
+    let currentStep = 0;
+
+    function updateProgress() {
+      const percent = ((currentStep) / steps.length) * 100;
+      progressFill.style.width = percent + "%";
+    }
+
+    function showStep(index) {
+      steps.forEach((step, i) => {
+        step.classList.toggle("active", i === index);
+      });
+
+      backBtn.style.display = index === 0 ? "none" : "inline-block";
+      nextBtn.textContent = index === steps.length - 1 ? "See Result" : "Next";
+      updateProgress();
+    }
+
+    function currentFieldName() {
+      const btn = steps[currentStep].querySelector(".option-btn");
+      return btn ? btn.dataset.field : null;
+    }
+
+    function hasAnswerForCurrentStep() {
+      const field = currentFieldName();
+      return field && answers[field] !== null;
+    }
+
+    document.querySelectorAll(".option-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        const field = button.dataset.field;
+        const value = button.dataset.value;
+        answers[field] = value;
+
+        const siblingButtons = button.parentElement.querySelectorAll(".option-btn");
+        siblingButtons.forEach((btn) => btn.classList.remove("selected"));
+        button.classList.add("selected");
+      });
+    });
+
+    backBtn.addEventListener("click", () => {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (!hasAnswerForCurrentStep()) {
+        alert("Please choose an answer before continuing.");
+        return;
+      }
+
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      } else {
+        renderResult();
+      }
+    });
+
+    function renderResult() {
+      const titleEl = document.getElementById("resultTitle");
+      const summaryEl = document.getElementById("resultSummary");
+      const distributionList = document.getElementById("distributionList");
+      const impactLine = document.getElementById("impactLine");
+
+      let title = "";
+      let summary = "";
+      let impact = "";
+      let items = [];
+
+      const spouse = answers.spouse;
+      const children = answers.children;
+      const parents = answers.parents;
+      const siblings = answers.siblings;
+      const communityProperty = answers.communityProperty;
+      const separateProperty = answers.separateProperty;
+
+      if (spouse === "yes") {
+        title = "A surviving spouse or partner likely inherits a major share";
+        summary = "Under California’s intestate succession rules, a surviving spouse or registered domestic partner generally receives the decedent’s half of community and quasi-community property, while separate property splits depend on whether there are children, parents, or siblings.";
+
+        if (communityProperty === "yes") {
+          items.push("Spouse / partner likely receives the decedent’s one-half share of community property.");
+        }
+
+        if (separateProperty === "yes") {
+          if (children === "none" && parents === "no" && siblings === "no") {
+            items.push("Spouse / partner likely receives all separate property.");
+          } else if (children === "one" || (children === "none" && (parents === "yes" || siblings === "yes"))) {
+            items.push("Spouse / partner likely receives one-half of separate property.");
+            if (children === "one") {
+              items.push("The child line likely receives the other one-half of separate property.");
+            } else {
+              items.push("A parent or sibling line may receive the other one-half of separate property.");
+            }
+          } else if (children === "multiple") {
+            items.push("Spouse / partner likely receives one-third of separate property.");
+            items.push("Children / descendant lines likely receive the remaining two-thirds of separate property.");
+          }
+        } else {
+          items.push("No separate property was indicated, so the result may depend mostly on how property was titled.");
+        }
+
+        impact = "This is exactly why many families use a trust: without one, default inheritance rules can decide outcomes instead of a clear plan.";
+      } else {
+        title = "Inheritance likely follows the family line in order";
+        summary = "Without a surviving spouse or partner, California intestate succession generally passes property first to children or descendants, then to parents, then to siblings or their descendants if closer heirs are not living.";
+
+        if (children === "one") {
+          items.push("The single child line likely inherits the estate.");
+        } else if (children === "multiple") {
+          items.push("Children / descendant lines likely inherit the estate in shares.");
+        } else if (parents === "yes") {
+          items.push("Parent or parents likely inherit the estate.");
+        } else if (siblings === "yes") {
+          items.push("Sibling lines may inherit if there are no surviving children or parents.");
+        } else {
+          items.push("If there are no closer surviving heirs, inheritance may continue further down the statutory priority line.");
+        }
+
+        impact = "When there is no will or trust, the law — not the family — can end up dictating the inheritance outcome.";
+      }
+
+      titleEl.textContent = title;
+      summaryEl.textContent = summary;
+      impactLine.textContent = impact;
+
+      distributionList.innerHTML = "";
+      items.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        distributionList.appendChild(li);
+      });
+
+      flow.style.display = "none";
+      resultBox.classList.add("show");
+      progressFill.style.width = "100%";
+      resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    showStep(currentStep);
+  </script>
+</body>
+</html>
