@@ -54,6 +54,30 @@
       opacity:1;
     }
 
+    .back-tools-row {
+      max-width: 980px;
+      margin: 8px auto 0 auto;
+      padding: 0 24px;
+    }
+
+    .back-tools-link {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #4b5563;
+      text-decoration: none;
+      opacity: 0.94;
+      transition: color 0.15s ease, opacity 0.15s ease, text-decoration-color 0.15s ease;
+    }
+
+    .back-tools-link:hover {
+      color: #1f2937;
+      opacity: 1;
+      text-decoration: underline;
+      text-decoration-color: rgba(31, 41, 55, 0.35);
+      text-underline-offset: 2px;
+    }
+
     .wrapper {
       max-width: 760px;
       margin: -8px auto 40px auto;
@@ -291,6 +315,10 @@
         <a href="https://pillarpath.co/contact">Meet With Us</a>
       </nav>
     </div>
+  </div>
+
+  <div class="back-tools-row">
+    <a class="back-tools-link" href="https://pillarpath-tools.vercel.app">← Back to Tools</a>
   </div>
 
   <div class="wrapper">
